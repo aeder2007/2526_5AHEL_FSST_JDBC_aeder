@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<VBox spacing="12"
+      alignment="TOP_CENTER"
+      xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.jdbc.HelloController">
+
   <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    <Insets top="20" right="20" bottom="20" left="20"/>
   </padding>
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
+  <Label text="BubbleChart: Fläche vs. Bevölkerung (Bubble = Lebenserwartung)"
+         style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+  <HBox spacing="10" alignment="CENTER_LEFT">
+    <Label text="Filter (Ländername):"/>
+    <TextField fx:id="filterField" promptText="z.B. Ger, Uni, ... " prefWidth="260"/>
+    <Button text="Neu laden" onAction="#reloadData"/>
+  </HBox>
+
+  <BubbleChart fx:id="bubbleChart" prefWidth="900" prefHeight="520">
+    <xAxis>
+      <NumberAxis fx:id="xAxis" label="Fläche (SurfaceArea)"/>
+    </xAxis>
+    <yAxis>
+      <NumberAxis fx:id="yAxis" label="Bevölkerung (Population)"/>
+    </yAxis>
+  </BubbleChart>
+
 </VBox>
